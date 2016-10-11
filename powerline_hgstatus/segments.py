@@ -9,7 +9,7 @@ import os
 @requires_segment_info
 class HgStatusSegment(Segment):
 
-    def get_hg_status():
+    def get_hg_status(self):
         has_modified_files = False
         has_untracked_files = False
         has_missing_files = False
@@ -28,7 +28,7 @@ class HgStatusSegment(Segment):
                 has_modified_files = True
         return has_modified_files, has_untracked_files, has_missing_files
 
-    def get_hg_branch():
+    def get_hg_branch(self):
         branch = os.popen('hg branch 2> /dev/null').read().rstrip()
         if len(branch) == 0:
             return False
