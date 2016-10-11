@@ -5,7 +5,7 @@ from setuptools import setup
 setup(
     name         = 'powerline-hgstatus',
     description  = 'A Powerline segment for showing the status of a Mercurial working copy',
-    version      = '0.0.1',
+    version      = '0.0.2',
     keywords     = 'powerline hg status prompt',
     license      = 'MIT',
     author       = 'Ian Scherer',
