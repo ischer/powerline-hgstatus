@@ -32,14 +32,14 @@ for example in `.config/powerline/colorschemes/default.json`:
 ```json
 {
 	"groups": {
-		"hgstatus":			{ "fg": "gray8",           "bg": "gray1", "attrs": [] },
-		"hgstatus_branch":		{ "fg": "gray9",           "bg": "gray1", "attrs": [] },
-		"hgstatus_branch_clean":	{ "fg": "gray9",           "bg": "gray1", "attrs": [] },
-		"hgstatus_branch_dirty":	{ "fg": "mediumorange",    "bg": "gray1", "attrs": [] },
-		"hgstatus_missing":		{ "fg": "brightred",       "bg": "gray1", "attrs": [] },
-		"hgstatus_modified":		{ "fg": "mediumorange",    "bg": "gray1", "attrs": [] },
-		"hgstatus_untracked":		{ "fg": "brightestorange", "bg": "gray1", "attrs": [] },
-		"hgstatus:divider":		{ "fg": "gray5",           "bg": "gray1", "attrs": [] }
+		"hgstatus":                 { "fg": "gray8",           "bg": "gray1", "attrs": [] },
+		"hgstatus_branch":          { "fg": "gray9",           "bg": "gray1", "attrs": [] },
+		"hgstatus_branch_clean":    { "fg": "gray9",           "bg": "gray1", "attrs": [] },
+		"hgstatus_branch_dirty":    { "fg": "mediumorange",    "bg": "gray1", "attrs": [] },
+		"hgstatus_missing":         { "fg": "brightred",       "bg": "gray1", "attrs": [] },
+		"hgstatus_modified":        { "fg": "mediumorange",    "bg": "gray1", "attrs": [] },
+		"hgstatus_untracked":       { "fg": "brightestorange", "bg": "gray1", "attrs": [] },
+		"hgstatus:divider":         { "fg": "gray5",           "bg": "gray1", "attrs": [] }
 	}
 }
 ```
