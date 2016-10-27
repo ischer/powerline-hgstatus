@@ -26,11 +26,13 @@ class HgStatusSegment(Segment):
         modified_files = 0
         untracked_files = 0
         missing_files = 0
+        added_files = 0
+        removed_files = 0
 
         output, err = self.execute(pl, ['hg', 'status', '-R', cwd])
 
         if len(output) == 0:
-            return modified_files, untracked_files, missing_files
+            return modified_files, untracked_files, missing_files, added_files, removed_files
 
         for line in output:
             if line == '':
@@ -41,12 +43,12 @@ class HgStatusSegment(Segment):
                 missing_files += 1
             elif line[0] == 'M':
                 modified_files += 1
-	    elif line[0] == 'A':
-		modified_files += 1
-	    elif line[0] == 'R':
-		missing_files += 1
+    	    elif line[0] == 'A':
+                added_files += 1
+    	    elif line[0] == 'R':
+                removed_files += 1
 
-        return modified_files, untracked_files, missing_files
+        return modified_files, untracked_files, missing_files, added_files, removed_files
 
     def get_hg_branch(self, pl, cwd):
         output, err = self.execute(pl, ['hg', 'branch', '-R', cwd])
@@ -59,9 +61,9 @@ class HgStatusSegment(Segment):
         return branch
 
     def build_segments(self, branch, pl, cwd):
-        modified_files, untracked_files, missing_files = self.get_hg_status(pl, cwd)
+        modified_files, untracked_files, missing_files, added_files, removed_files = self.get_hg_status(pl, cwd)
 
-        if missing_files > 0 or modified_files > 0 or untracked_files > 0:
+        if missing_files > 0 or modified_files > 0 or untracked_files > 0 or added_files > 0 or removed_files > 0:
             branch_group = 'hgstatus_branch_dirty'
         else:
             branch_group = 'hgstatus_branch_clean'
@@ -71,11 +73,15 @@ class HgStatusSegment(Segment):
         ]
 
         if missing_files > 0:
-            segments.append({'contents': ' ✖ ' + str(missing_files), 'highlight_groups': ['hgstatus_missing', 'hgstatus'], 'divider_highlight_group': 'hgstatus:divider'})
+            segments.append({'contents': ' ! ' + str(missing_files), 'highlight_groups': ['hgstatus_missing', 'hgstatus'], 'divider_highlight_group': 'hgstatus:divider'})
         if modified_files > 0:
-            segments.append({'contents': ' ✚ ' + str(modified_files), 'highlight_groups': ['hgstatus_modified', 'hgstatus'], 'divider_highlight_group': 'hgstatus:divider'})
+            segments.append({'contents': ' ● ' + str(modified_files), 'highlight_groups': ['hgstatus_modified', 'hgstatus'], 'divider_highlight_group': 'hgstatus:divider'})
         if untracked_files > 0:
             segments.append({'contents': ' … ' + str(untracked_files), 'highlight_groups': ['hgstatus_untracked', 'hgstatus'], 'divider_highlight_group': 'hgstatus:divider'})
+        if added_files > 0:
+            segments.append({'contents': ' ✚ ' + str(added_files), 'highlight_groups': ['hgstatus_added', 'hgstatus'], 'divider_highlight_group': 'hgstatus:divider'})
+        if removed_files > 0:
+            segments.append({'contents': ' ✖ ' + str(removed_files), 'highlight_groups': ['hgstatus_removed', 'hgstatus'], 'divider_highlight_group': 'hgstatus:divider'})
 
         return segments
 
