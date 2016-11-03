@@ -8,8 +8,10 @@ By [Ian Scherer][2].
 Glossary
 --------
 - ``: branch name or commit hash
+- `!`: missing files
 - `✖`: removed files
-- `✚`: changed files
+- `●`: changed files
+- `✚`: added files
 - `…`: untracked files
 
 Requirements
@@ -37,7 +39,9 @@ for example in `.config/powerline/colorschemes/default.json`:
 		"hgstatus_branch_clean":    { "fg": "gray9",           "bg": "gray1", "attrs": [] },
 		"hgstatus_branch_dirty":    { "fg": "mediumorange",    "bg": "gray1", "attrs": [] },
 		"hgstatus_missing":         { "fg": "brightred",       "bg": "gray1", "attrs": [] },
-		"hgstatus_modified":        { "fg": "mediumorange",    "bg": "gray1", "attrs": [] },
+		"hgstatus_removed":         { "fg": "brightred",       "bg": "gray1", "attrs": [] },
+		"hgstatus_modified":        { "fg": "green",           "bg": "gray1", "attrs": [] },
+		"hgstatus_added":           { "fg": "darkgreen",       "bg": "gray1", "attrs": [] },
 		"hgstatus_untracked":       { "fg": "brightestorange", "bg": "gray1", "attrs": [] },
 		"hgstatus:divider":         { "fg": "gray5",           "bg": "gray1", "attrs": [] }
 	}
