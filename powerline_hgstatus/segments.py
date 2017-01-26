@@ -43,9 +43,9 @@ class HgStatusSegment(Segment):
                 missing_files += 1
             elif line[0] == 'M':
                 modified_files += 1
-    	    elif line[0] == 'A':
+            elif line[0] == 'A':
                 added_files += 1
-    	    elif line[0] == 'R':
+            elif line[0] == 'R':
                 removed_files += 1
 
         return modified_files, untracked_files, missing_files, added_files, removed_files
