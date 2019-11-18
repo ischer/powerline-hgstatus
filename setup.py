@@ -12,6 +12,9 @@ setup(
     author_email = 'ianscherer@comcast.net',
     url          = 'https://github.com/ischer/powerline-hgstatus',
     packages     = ['powerline_hgstatus'],
+    install_requires=[
+          'python-hglib',
+    ],
     classifiers  = [
         'Environment :: Console',
         'Intended Audience :: Developers',
